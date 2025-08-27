@@ -10,9 +10,11 @@ int main() {
 
     printf("Digite a sua altura: ");
     scanf("%f", &altura);
+    getchar();
 
     printf("Digite o seu nome: ");
-    fgets(nome, sizeof(nome), stdin);
+    fgets(nome, 50, stdin);
+    nome[strcspn(cidade, "\n")] = '\0';
 
     printf("Você concorda com os termos? (S/N) ");
     scanf(" %c", &opcao);
