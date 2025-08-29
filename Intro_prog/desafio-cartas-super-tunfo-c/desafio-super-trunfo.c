@@ -5,13 +5,14 @@ int main(){
     char estado, estado2, enter; // essa variável 'enter' foi utilizada na linha 40 do código para que haja uma pequena pausa entre a finalização do cadastro das carta 1 e inicio do cadastro da carta 2 
     char cod_carta[5], cod_carta2[5];
     char cidade[50], cidade2[50];
-    int habitantes_cidade, habitantes_cidade2;
+    unsigned long int habitantes_cidade, habitantes_cidade2;
     float area_cidade, area_cidade2;
     float pib_cidade, pib_cidade2;
     int pontos_turisticos, pontos_turisticos2;
     float densidade_populacional, densidade_populacional2; //calculada com base na população divido pela área
     float pib_per_capita, pib_per_capita2; //calculada com base no PIB municipal divido pela qtde de habitantes
-
+    float inverso_densidade, inverso_densidade2;
+    float superPoder, superPoder2;
 
     printf("Cadastro de cartas\n"); //inicio do cadastro
     printf("Digite o Estado (A-H): "); //usuário escreve uma letra de A a H
@@ -41,6 +42,8 @@ int main(){
     //utilizado o casting por conta da variável habitantes_cidade ser to tipo int e as váriaveis area_cidade e pib_cidade serem do tipo float
     densidade_populacional = (float) habitantes_cidade / area_cidade;
     pib_per_capita = (float) (pib_cidade * 1000000000) / habitantes_cidade; //o pib foi multiplicado por 1bilhão por conta da forma que está sendo coletado
+    inverso_densidade = area_cidade / (float) habitantes_cidade;
+    superPoder = (float) habitantes_cidade + area_cidade + pib_cidade + (float) pontos_turisticos + pib_per_capita + inverso_densidade;
 
     printf("\nAgora iremos cadastrar a segunda carta, pressione enter para continuar.");
     scanf("%c", &enter); // conforme mencionado no incio, aqui irá aguardar o usuário apertar 'enter' para que o programa não rode direto e comece a coletar os dados da segunda carta
@@ -71,6 +74,8 @@ int main(){
 
     densidade_populacional2 = (float) habitantes_cidade2 / area_cidade2;
     pib_per_capita2 = (float) (pib_cidade2 * 1000000000) / habitantes_cidade2;
+    inverso_densidade = area_cidade2 / (float) habitantes_cidade2;
+    superPoder2 = (float) habitantes_cidade2 + area_cidade2 + pib_cidade2 + (float) pontos_turisticos2 + pib_per_capita2 + inverso_densidade2;
 
     //ao final do cadastro da segunda carta o programa irá apresentar os dados cadastrados
     
@@ -84,6 +89,7 @@ int main(){
     printf("Número de pontos turisticos: %d\n", pontos_turisticos);
     printf("Densidade Populacional: %.2f hab/km²\n", densidade_populacional);
     printf("PIB per Capita: %.2f reais\n", pib_per_capita);
+    printf("Super Poder: %.2f\n", superPoder);
 
     //apresentação dos dados finais da carta 2
     printf("\nCarta 2:\n");
@@ -96,6 +102,16 @@ int main(){
     printf("Número de pontos turisticos: %d\n", pontos_turisticos2);
     printf("Densidade Populacional: %.2f hab/km²\n", densidade_populacional2);
     printf("PIB per Capita: %.2f reais\n", pib_per_capita2);
+    printf("Super Poder: %.2f\n", superPoder2);
+
+    printf("\n*** Comparação de Cartas ***\n");
+    printf("População: Carta 1 Venceu? (%d)\n", habitantes_cidade > habitantes_cidade2);
+    printf("Área: Carta 1 venceu? (%d)\n", area_cidade > area_cidade2);
+    printf("PIB: Carta 1 venceu? (%d)\n", pib_cidade > pib_cidade2);
+    printf("Pontos Turisticos: Carta 1 venceu? (%d)\n", pontos_turisticos > pontos_turisticos2);
+    printf("Densidade Populacional: Carta 1 venceu? (%d)\n", densidade_populacional < densidade_populacional2);
+    printf("PIB per Capita: Carta 1 venceu? (%d)\n", pib_per_capita > pib_per_capita2);
+    printf("Super Poder: Carta 1 venceu? (%d)\n", superPoder > superPoder2);
 
     return 0;
 }
