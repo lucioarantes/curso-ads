@@ -1,8 +1,12 @@
 #include <stdio.h>
 
 int main(){
-    //Movimentos da Torre em linha reta horizontalmente ou Verticalmente. Simular 5 casas para à direita
     int torre = 1;
+    int bispo = 1;
+    char coluna = 'A';
+    int rainha = 1;
+    int cavaloHorizontal, cavaloVertical;
+    //Movimentos da Torre em linha reta horizontalmente ou Verticalmente. Simular 5 casas para à direita
     printf("*** Movimentos da Torre ***\n");
     while (torre <= 5)
     {
@@ -11,21 +15,30 @@ int main(){
     }
 
     //Movimentos do Bispo na diagonal. Simular 5 casas na diagonal para cima e à direita
-    int bispo = 1;
-    printf("*** Movimentos do Bispo ***\n");
+    printf("\n*** Movimentos do Bispo ***\n");
     do {
-        printf("Direita %d - Cima %d\n", bispo, bispo);
+        printf("Direita-Cima %d %c\n", bispo, coluna);
         bispo++;
-        //char++;
+        coluna++;
     } while (bispo <= 5);
 
     //Movimentos da Rainha para todas as direções. Simular 8 casas para a esquerda
     //na descrição do desafio pedia para simular 8 casas, mas o tabuleiro tem 8 linhas e 8 colunas, se for seguir o enunciado a Rainha sairá para fora do tabuleiro.
-    int rainha = 1;
-    printf("*** Movimentos da Rainha ***\n");
+    printf("\n*** Movimentos da Rainha ***\n");
     
     for (rainha; rainha <= 7; rainha++) {
         printf("Esquerda %d\n", rainha);
+    }
+
+    //Movimento do Cavalo em 'L'. Simular duas casas para baixo e uma à esquerda
+    printf("\n*** Movimentos do Cavalo ***\n");
+    for(cavaloHorizontal = 1; cavaloHorizontal <= 1; cavaloHorizontal++){
+        cavaloVertical = 1;
+        while(cavaloVertical <= 2){
+            printf("Baixo %d\n", cavaloVertical);
+            cavaloVertical++;
+        }
+        printf("Esquerda %d\n", cavaloHorizontal);
     }
 
     return 0;
